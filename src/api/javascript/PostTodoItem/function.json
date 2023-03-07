@@ -1,0 +1,27 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["post"],
+      "route": "todos"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "todo",
+      "type": "cosmosDB",
+      "databaseName": "TodoList",
+      "collectionName": "Items",
+      "createIfNotExists": true,
+      "connectionStringSetting": "CosmosConnectionString",
+      "direction": "out"
+    }
+  ],
+  "scriptFile": "../dist/PostTodoItem/index.js"
+}

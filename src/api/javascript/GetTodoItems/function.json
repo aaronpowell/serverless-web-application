@@ -1,0 +1,27 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get"],
+      "route": "todos"
+    },
+    {
+      "name": "todoItems",
+      "type": "cosmosDB",
+      "direction": "in",
+      "databaseName": "TodoList",
+      "collectionName": "Items",
+      "sqlQuery": "SELECT c.id, c.owner, c.description, c.status FROM c",
+      "connectionStringSetting": "CosmosConnectionString"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "scriptFile": "../dist/GetTodoItems/index.js"
+}

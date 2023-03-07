@@ -1,0 +1,37 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["put"],
+      "route": "todos/{id}"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "toDoItem",
+      "databaseName": "TodoList",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosConnectionString",
+      "direction": "in",
+      "Id": "{id}",
+      "PartitionKey": "{id}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "todoUpdate",
+      "type": "cosmosDB",
+      "databaseName": "TodoList",
+      "collectionName": "Items",
+      "createIfNotExists": true,
+      "connectionStringSetting": "CosmosConnectionString",
+      "direction": "out"
+    }
+  ],
+  "scriptFile": "../dist/PutTodoItem/index.js"
+}

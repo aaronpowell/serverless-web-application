@@ -1,0 +1,33 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+  "name": "ServerlessDays ANZ demo",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "editorconfig.editorconfig",
+        "ms-azuretools.vscode-cosmosdb",
+        "Azurite.azurite"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile": "zsh"
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli": {},
+    "ghcr.io/devcontainers/features/dotnet": {},
+    "ghcr.io/devcontainers/features/docker-outside-of-docker": {},
+    "ghcr.io/jlaundry/devcontainer-features/azure-functions-core-tools:1": {}
+  },
+  "remoteEnv": {
+    "NODE_EXTRA_CA_CERTS": "/usr/local/share/ca-certificates/emulator.crt"
+  },
+  "postCreateCommand": "./.devcontainer/setup-cosmos.sh"
+}

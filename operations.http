@@ -1,0 +1,38 @@
+@host = http://localhost:7071/api
+
+HEAD {{host}}/todos
+
+###
+
+GET {{host}}/todos
+
+###
+
+# @name createTodo
+POST {{host}}/todos
+Content-Type: application/json
+
+{
+    "owner": "Aaron",
+    "description": "Hello ServerlessDays ANZ"
+}
+
+###
+
+@todoId = {{createTodo.response.body.$.id}}
+GET {{host}}/todos/{{todoId}}
+
+###
+PUT {{host}}/todos/{{todoId}}
+Content-Type: application/json
+
+{
+    "status": true
+}
+
+###
+
+GET {{host}}/todos
+
+###
+DELETE {{host}}/todos/{{todoId}}

@@ -1,0 +1,28 @@
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": ["get"],
+      "route": "todos/{id}"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "toDoItem",
+      "databaseName": "TodoList",
+      "collectionName": "Items",
+      "connectionStringSetting": "CosmosConnectionString",
+      "direction": "in",
+      "Id": "{id}",
+      "PartitionKey": "{id}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ],
+  "scriptFile": "../dist/GetTodoItem/index.js"
+}

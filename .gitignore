@@ -357,3 +357,7 @@ vscode/
 dist/
 
 *.copy.*
+
+__azurite*
+__blobstorage__
+__queuestorage__
