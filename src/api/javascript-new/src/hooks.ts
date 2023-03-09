@@ -1,13 +1,16 @@
 import { CosmosClient } from "@azure/cosmos";
 import { registerHook } from "@azure/functions-core";
+import { cosmosSettings } from "./cosmosBindings";
 
 registerHook("preInvocation", async (context) => {
-  const client = new CosmosClient(process.env.CosmosConnectionString);
+  const client = new CosmosClient(
+    process.env[cosmosSettings.connectionStringSetting]
+  );
   const { database } = await client.databases.createIfNotExists({
-    id: "TodoList",
+    id: cosmosSettings.databaseName,
   });
   const { container } = await database.containers.createIfNotExists({
-    id: "Items",
+    id: cosmosSettings.collectionName,
     partitionKey: { paths: ["/id"] },
   });
 

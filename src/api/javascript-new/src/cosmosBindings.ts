@@ -1,15 +1,9 @@
-import { input } from "@azure/functions";
+import { input, output } from "@azure/functions";
 
-const baseCosmosBinding = input.cosmosDB({
+export const cosmosSettings = {
   databaseName: "TodoList",
   collectionName: "Items",
   connectionStringSetting: "CosmosConnectionString",
-});
-export const baseCosmosInputBinding = {
-  ...baseCosmosBinding,
-  direction: "in",
 };
-export const baseCosmosOutputBinding = {
-  ...baseCosmosBinding,
-  direction: "out",
-};
+export const baseCosmosInputBinding = input.cosmosDB(cosmosSettings);
+export const baseCosmosOutputBinding = output.cosmosDB(cosmosSettings);

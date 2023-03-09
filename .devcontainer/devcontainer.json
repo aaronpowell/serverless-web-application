@@ -13,7 +13,8 @@
         "dbaeumer.vscode-eslint",
         "editorconfig.editorconfig",
         "ms-azuretools.vscode-cosmosdb",
-        "Azurite.azurite"
+        "Azurite.azurite",
+        "humao.rest-client"
       ],
       "settings": {
         "terminal.integrated.defaultProfile": "zsh"

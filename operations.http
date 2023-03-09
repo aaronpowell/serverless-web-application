@@ -1,9 +1,11 @@
 @host = http://localhost:7071/api
 
+# @name healthCheck
 HEAD {{host}}/todos
 
 ###
 
+# @name getTodos
 GET {{host}}/todos
 
 ###
@@ -19,10 +21,13 @@ Content-Type: application/json
 
 ###
 
+# @name getNewlyCreatedTodo
 @todoId = {{createTodo.response.body.$.id}}
 GET {{host}}/todos/{{todoId}}
 
 ###
+
+# @name updateTodo
 PUT {{host}}/todos/{{todoId}}
 Content-Type: application/json
 
@@ -32,7 +37,10 @@ Content-Type: application/json
 
 ###
 
+# @name getUpdatedTodo
 GET {{host}}/todos
 
 ###
+
+# @name deleteTodo
 DELETE {{host}}/todos/{{todoId}}
